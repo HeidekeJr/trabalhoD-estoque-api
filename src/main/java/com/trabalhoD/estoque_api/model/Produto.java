@@ -22,6 +22,30 @@ public class Produto {
     @Column(nullable = false)
     private String nome;
 
+    public Integer getQuantidadeAtual() {
+        return quantidadeAtual;
+    }
+
+    public void setQuantidadeAtual(Integer quantidadeAtual) {
+        this.quantidadeAtual = quantidadeAtual;
+    }
+
+    public String getNome() {
+        return nome;
+    }
+
+    public void setNome(String nome) {
+        this.nome = nome;
+    }
+
+    public Integer getPontoDePedido() {
+        return pontoDePedido;
+    }
+
+    public void setPontoDePedido(Integer pontoDePedido) {
+        this.pontoDePedido = pontoDePedido;
+    }
+
     @NotNull(message = "A quantidade atual não pode ser nula.")
     @Column(nullable = false)
     private Integer quantidadeAtual;
