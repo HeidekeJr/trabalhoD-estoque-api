@@ -38,6 +38,18 @@ public class ControleDeErros {
                 .body("Erro de integridade: Não é possível deletar um registro que está vinculado a outro cadastro no sistema.");
     }
 
+    @ExceptionHandler(LoginInvalidoException.class)
+    public ResponseEntity<String> handleLoginInvalido(LoginInvalidoException ex) {
+        return ResponseEntity.status(HttpStatus.UNAUTHORIZED)
+                .body(ex.getMessage());
+    }
+
+    @ExceptionHandler(UsuarioJaExistenteException.class)
+    public ResponseEntity<String> handleUsuarioJaExiste(UsuarioJaExistenteException ex) {
+        return ResponseEntity.status(HttpStatus.CONFLICT)
+                .body(ex.getMessage());
+    }
+
     // Erro genérico (Para qualquer outra falha não mapeada)
     @ExceptionHandler(Exception.class)
     public ResponseEntity<String> handleGeneric(Exception ex) {
